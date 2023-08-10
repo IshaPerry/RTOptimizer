@@ -1,0 +1,48 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header ">
+          <h5 class="title">Building View</h5>
+        </div>
+        <hr>
+        <div class="card-body ">
+          <div id="map" class="map"></div>
+        </div>
+        <div class="card-header ">
+         <h5> Building Information </h5> 
+        </div>
+        <div class="card-body ">
+          <button type="button" (click)="showFloorScreen()" class="btn btn-primary">Floor Directory</button>
+          <button type="button" (click)="showCafeteriaScreen()" class="btn btn-primary">Cafeteria Menus</button>
+          <button type="button" (click)="showAmenitiesScreen()" class="btn btn-primary">Amenities</button>
+          <div class="card "  *ngIf="showFloorInfo">
+            <div class="card-body " *ngIf="showFloorInfo" >
+              <img class="card-img-top" src="./assets/img/office-directory.png" alt="Card image cap" style="width: 40%; height: 40%" >
+            </div>
+            </div>
+            <div class="card " *ngIf="showCafeteriaInfo">
+              <div class="card-header " *ngIf="showCafeteriaInfo">
+               <h6> {{currentDate | date:'MM/dd/yyyy'}} Lunch and Cafe Menus </h6>
+              </div>
+              <div class="card-body " *ngIf="showCafeteriaInfo">
+                <img class="card-img-top" src="./assets/img/lunch-menu.png" alt="Card image cap" style="width: 40%; height: 40%"  Hspace="30" >
+                <img class="card-img-top" src="./assets/img/cafe-menu.jpg" alt="Card image cap"style="width: 30%; height: 20%"  >
+              </div>
+            </div>
+              <div class="card " *ngIf="showAmenitiesInfo">
+                <div class="card-header " *ngIf="showAmenitiesInfo">
+                  <h6>Office Amenities</h6>
+                </div>
+                <div class="card-body " *ngIf="showAmenitiesInfo" >
+                  <img class="card-img-top" src="./assets/img/amenities-info.png" alt="Card image cap"style="width: 40%; height: 40%"  >
+                </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

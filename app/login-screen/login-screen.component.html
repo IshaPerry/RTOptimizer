@@ -1,0 +1,34 @@
+<div class="backgroundColorContainer">
+  <div class="container">
+    <div class="card">
+      <div class="text-center">
+        <h1>RTOptimizer</h1>
+        <h6>Login</h6>
+      </div>
+      <form>
+       <form>
+           <div class="form-group"  min-height="100%">
+             <label for="exampleInputEmail1">Username</label> 
+             <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username"
+             #usernameInput [(ngModel)]="username">
+           </div>
+           <div class="form-group">
+             <label for="exampleInputPassword1">Password</label>
+             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+           </div>
+           <div #dropdown ngbDropdown class="dropdown" placement="bottom-right">
+               <button class="btn btn-default dropdown-toggle" ngbDropdownToggle>{{ selectedOption || 'Role' }}</button>
+               <div ngbDropdownMenu class="dropdown-content" >
+                   <a class="dropdown-item" value="Employee" (click)="selectedEmployee()">Employee</a>
+                   <a class="dropdown-item" value="Admin" (click)="selectedAdmin()">Admin</a>
+               <!-- <select [(ngModel)]="status" (change)="selected()" placeholder="Role">
+                   <option *ngFor="let item of data" [ngValue]="item">{{item.name}} </option>
+               </select> -->
+               </div>
+               <button type="submit" id="loginBtn" (click)="login()" class="btn btn-primary">Login</button>
+           </div> 
+         </form>
+      </form>
+    </div>
+  </div>
+</div>

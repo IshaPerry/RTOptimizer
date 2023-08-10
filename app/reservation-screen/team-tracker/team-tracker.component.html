@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Team Tracker</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive" style="height: 250px; overflow: auto;">
+        <table class="table">
+          <thead class=" text-primary">
+            <th>
+              Name
+            </th>
+            <th>
+              Building
+            </th>
+            <th>
+              Floor
+            </th>
+            <th>
+              Seat Tag
+            </th>
+            <th>
+              Type
+            </th>
+          </thead>
+          <tbody *ngFor="let memberProfile of team">
+            <tr *ngIf="memberProfile.reservations.length > 0">
+              <td>
+                  {{ memberProfile.name }}
+              </td>
+              <td>
+                  1
+              </td>
+              <td>
+                  {{ memberProfile.reservations[0].floor }}
+              </td>
+              <td>
+                  {{ memberProfile.reservations[0].tag }}
+              </td>
+              <td>
+                  {{ memberProfile.reservations[0].type }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr style="padding-top: 5px;">
+    </div>
+  </div>

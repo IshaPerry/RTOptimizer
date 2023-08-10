@@ -1,0 +1,28 @@
+.chart-legend {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+  }
+  
+  .legend-color {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+  }
+
+  .card-img-top {
+    object-fit: cover;
+    width: 300px;
+    height: 200px;
+ }
+
+.card-body {
+    position: relative;
+}

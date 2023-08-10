@@ -1,0 +1,280 @@
+<div class="panel-header panel-header-lg" >
+  <canvas  baseChart id="powerCapacityChart"
+              [datasets]="powerCapacityLineChartData"
+              [labels]="powerCapacityLineChartLabels"
+               [colors]="powerCapacityLineChartColors"
+              [options]="powerCapacityLineChartOptions"
+              [chartType]="powerCapacityLineChart"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Employee Map</h5>
+          <h4 class="card-title">Team Locations</h4>
+          <div ngbDropdown>
+            <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" ngbDropdownToggle>
+              <i class="now-ui-icons loader_gear"></i>
+            </button>
+            <div ngbDropdownMenu class="dropdown-menu-right">
+              <a class="dropdown-item" (click)="showImage1()">TDP Engagement Team</a>
+              <a class="dropdown-item" (click)="showImage2()">Junior Developers Team 1</a>
+              <a class="dropdown-item" (click)="showImage3()">Product Marketing Team</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body" position="fixed">
+          <img class="card-img-top" *ngIf="!show1 && !show2 && !show3" src = "./assets/img/floor-plan.png" alt="Card image cap">
+          <img class="card-img-top" *ngIf="show1" src="./assets/img/engagementTeamLocation.jpg" alt="Card image cap"  >
+          <img class="card-img-top" *ngIf="show2" src="./assets/img/juniorDevelopersLocation.jpg" alt="Card image cap"  >
+          <img class="card-img-top" *ngIf="show3" src="./assets/img/productMarketingLocation.jpg" alt="Card image cap" >
+          <!-- <div class="chart-area">
+            <canvas baseChart id="placeHolderEmployeeMap">
+           </canvas>
+          </div> -->
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <div class="col-lg-4 col-md-6">
+    <div class="card card-chart">
+      <div class="card-header">
+        <h5 class="card-category">Resource Strain</h5>
+        <h4 class="card-title">Average Weekly Strain</h4>
+      </div>
+
+
+      <div class="card-body">
+        <div class="chart-area">
+          <!-- <div class="chart-legend">
+            <div *ngFor="let legendItem of customLegendLabels" class="legend-item">
+              <span class="legend-color" [style.background-color]="legendItem.backgroundColor"></span>
+              <span class="legend-label">{{legendItem.label}}</span>
+            </div>
+          </div> -->
+          <canvas baseChart id="resourceStrainChart"
+                      [datasets]="resourceStrainBarChartData"
+                      [labels]="barChartLabels"
+                      [colors]="resourceStrainBarChartColors"
+                      [options]="resourceStrainBarChartOptions"
+                      [chartType]="resourceStrainBarChartType"
+                      (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 Days
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-6">
+    <div class="card card-chart">
+      <div class="card-header">
+        <h5 class="card-category">Received Signal Strength Indicator (RSSI)</h5>
+        <h4 class="card-title">Wi-Fi Signal Strain</h4>
+      </div>
+      <div class="card-body">
+        <div class="chart-area">
+          <canvas baseChart id="wifiStrainChart"
+                      [datasets]="wifiStrainChartData"
+                      [labels]="wifiStrainChartLabels"
+                      [colors]="wifiStrainChartColors"
+                      [options]="wifiStrainChartOptions"
+                      [chartType]="wifiStrainChartType"
+
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="now-ui-icons ui-2_time-alarm"></i> Last 8 Hours
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <div class="card  card-tasks">
+      <div class="card-header ">
+        <h5 class="card-category">Analytics</h5>
+        <h4 class="card-title">Suggested Investments Based on Strain</h4>
+      </div>
+      <div class="card-body ">
+        <div class="table-full-width table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>
+                  <div class="form-check">
+                  </div>
+                </td>
+                <td class="text-left"><b>Suggestion:</b> Expand number of workspaces on floor 2. 
+                  <br><b>Data:</b> Floor 2 has surpassed maximum capacity 3 days this week.</td>
+                <td class="td-actions text-right">
+                  <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                    <i class="now-ui-icons ui-2_settings-90"></i>
+                  </button>
+                  <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check">
+                  </div>
+                </td>
+                <td class="text-left"><b>Suggestion:</b> Add Wi-Fi extenders in conference room 5. 
+                  <br><b>Data:</b>Conference room 5 has lost Wi-Fi connection 4 times this week.</td>
+                <td class="td-actions text-right">
+                  <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                    <i class="now-ui-icons ui-2_settings-90"></i>
+                  </button>
+                  <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check">
+                  </div>
+                </td>
+                <td class="text-left"> <b>Suggestion:</b> Rent floors 3 - 6 of parking lot B to another organization.
+                  <br><b> Data:</b> Parking lot B has been at 20% capacity this month.
+                </td>
+                <td class="td-actions text-right">
+                  <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                    <i class="now-ui-icons ui-2_settings-90"></i>
+                  </button>
+                  <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                    <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer ">
+        <hr>
+        <div class="stats">
+          <i class="now-ui-icons loader_refresh spin"></i> Updated 15 minutes ago
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-category">Employees</h5>
+        <h4 class="card-title">Reservation Information</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>
+                Name
+              </th>
+              <th>
+                Desk #
+              </th>
+              <th>
+                Total Hours in Office
+              </th>
+              <th class="text-right">
+                # of Reservations Missed 
+              </th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Isha Perry
+                </td>
+                <td>
+                  2c3
+                </td>
+                <td>
+                  7.46 
+                </td>
+                <td class="text-right">
+                  2
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Eric Lim
+                </td>
+                <td>
+                  2c2
+                </td>
+                <td>
+                  7.45
+                </td>
+                <td class="text-right">
+                  1
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  David Morgan
+                </td>
+                <td>
+                  2c5
+                </td>
+                <td>
+                  8.02
+                </td>
+                <td class="text-right">
+                  0
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Pranav Setlur
+                </td>
+                <td>
+                  2c6
+                </td>
+                <td>
+                  8.15
+                </td>
+                <td class="text-right">
+                  2
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  David Gordon
+                </td>
+                <td>
+                  2c4
+                </td>
+                <td>
+                  8.01
+                </td>
+                <td class="text-right">
+                  0
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

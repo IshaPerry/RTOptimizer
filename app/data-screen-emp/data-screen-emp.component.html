@@ -1,0 +1,259 @@
+<div class="panel-header panel-header-lg" >
+    <canvas  baseChart id="empCapacityChart"
+                [datasets]="empCapacityLineChartData"
+                [labels]="empCapacityLineChartLabels"
+                 [colors]="empCapacityLineChartColors"
+                [options]="empCapacityLineChartOptions"
+                [chartType]="empCapacityLineChart"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Team Location</h5>
+            <h4 class="card-title">ChatTDP</h4>
+            <div ngbDropdown>
+              <button type="button" class="btn btn-round btn-default dropdown-toggle btn-simple btn-icon no-caret" ngbDropdownToggle>
+                <i class="now-ui-icons loader_gear"></i>
+              </button>
+              <div ngbDropdownMenu class="dropdown-menu-right">
+                <a class="dropdown-item" (click)="showImage1()">Collaborating Team</a>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" position="fixed">
+            <img class="card-img-top" *ngIf="!show1 && !show2 && !show3" src = "./assets/img/floor-plan.png" alt="Card image cap">
+            <img class="card-img-top" *ngIf="show1" src="./assets/img/engagementTeamLocation.jpg" alt="Card image cap"  >
+            <!-- <div class="chart-area">
+              <canvas baseChart id="placeHolderEmployeeMap">
+             </canvas>
+            </div> -->
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  
+    <div class="col-lg-4 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">In-Person Work Time Data</h5>
+          <h4 class="card-title">Work Time Distribution</h4>
+        </div>
+  
+  
+        <div class="card-body">
+          <div class="chart-area">
+            <!-- <div class="chart-legend">
+              <div *ngFor="let legendItem of customLegendLabels" class="legend-item">
+                <span class="legend-color" [style.background-color]="legendItem.backgroundColor"></span>
+                <span class="legend-label">{{legendItem.label}}</span>
+              </div>
+            </div> -->
+            <canvas baseChart id="empWorkStatsChart"
+                        [datasets]="empWorkStatsBarChartData"
+                        [labels]="barChartLabels"
+                        [colors]="empWorkStatsBarChartColors"
+                        [options]="empWorkStatsBarChartOptions"
+                        [chartType]="empWorkStatsBarChartType"
+                        (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 Days
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Received Signal Strength Indicator (RSSI)</h5>
+          <h4 class="card-title">Wi-FiSignal Strain</h4>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas baseChart id="empWifiStrainChart"
+                        [datasets]="empWifiStrainChartData"
+                        [labels]="empWifiStrainChartLabels"
+                        [colors]="empWifiStrainChartColors"
+                        [options]="empWifiStrainChartOptions"
+                        [chartType]="empWifiStrainChartType"
+  
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="now-ui-icons ui-2_time-alarm"></i> Last 8 Hours
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card  card-tasks">
+        <div class="card-header ">
+          <h5 class="card-category">Analytics</h5>
+          <h4 class="card-title">Suggested Changes</h4>
+        </div>
+        <div class="card-body ">
+          <div class="table-full-width table-responsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="form-check">
+                    </div>
+                  </td>
+                  <td class="text-left"><b>Suggestion:</b> Arrive by 8:30 A.M. to get a cubicle on floor 2. 
+                    <br><b>Data:</b> Floor 2 surpasses maximum capacity by 8:45 A.M.</td>
+                  <td class="td-actions text-right">
+                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                      <i class="now-ui-icons ui-2_settings-90"></i>
+                    </button>
+                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="form-check">
+                    </div>
+                  </td>
+                  <td class="text-left"><b>Suggestion:</b> Take your lunch break between 11 and 12. 
+                    <br><b>Data:</b> Your weekly 12 P.M. typically runs 30 minutes over, and you have a meeting at 1 P.M.</td>
+                  <td class="td-actions text-right">
+                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                      <i class="now-ui-icons ui-2_settings-90"></i>
+                    </button>
+                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="form-check">
+                    </div>
+                  </td>
+                  <td class="text-left"> <b>Suggestion:</b> Wish your manager John Doe a Happy Birthday.
+                    <br><b> Data:</b> Today is John Doe's 44th birthday.
+                  </td>
+                  <td class="td-actions text-right">
+                    <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
+                      <i class="now-ui-icons ui-2_settings-90"></i>
+                    </button>
+                    <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <i class="now-ui-icons loader_refresh spin"></i> Updated 15 minutes ago
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-category">Management</h5>
+          <h4 class="card-title">Reservation Information</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Name
+                </th>
+                <th>
+                  Floor
+                </th>
+                <th>
+                  Desk #
+                </th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Manager
+                  </td>
+                  <td>
+                    2
+                  </td>
+                  <td>
+                    15
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Associate Director
+                  </td>
+                  <td>
+                    3
+                  </td>
+                  <td>
+                    17
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Business Partner
+                  </td>
+                  <td>
+                    2
+                  </td>
+                  <td>
+                    12
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Lead Developer
+                  </td>
+                  <td>
+                    4
+                  </td>
+                  <td>
+                    20
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Assistant Manager
+                  </td>
+                  <td>
+                    2
+                  </td>
+                  <td>
+                    14
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  

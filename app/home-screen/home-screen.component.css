@@ -1,0 +1,11 @@
+#button{
+   transform: translate(40%, 142%);
+}
+
+.notification-wrapper {
+   height: 60px; /* Adjust this value according to your needs */
+   overflow: hidden;
+   /* padding-top: .9rem;
+   padding-bottom: .9rem; */
+   /* border: 0; */
+}

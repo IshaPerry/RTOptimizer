@@ -1,0 +1,42 @@
+
+<nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute bg-primary fixed-top">
+    <div class="container-fluid">
+        
+        <button class="navbar-toggler" type="button" (click)="collapse()"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapseExample" [ngbCollapse]="isCollapsed">
+          <div class="custom-control custom-switch" style="display: 15px; padding-right: 5px;" *ngIf="initialAdminStatus === true">
+            <input type="checkbox" class="custom-control-input" id="activeStatus" style="transform: scale(1.5);" 
+              name="activeStatus" checked="true" (change)="onToggleChange($event)">
+            <label class="custom-control-label" for="activeStatus">Admin</label>
+          </div>
+          <ul class="navbar-nav">
+            <li class="nav-item" (click)="goToReservations()">
+              <a class="nav-link" >
+                <i class="gestures_tap-01 now-ui-icons"></i>
+                <p>
+                  <span class="d-lg-none d-md-block">Stats</span>
+                </p>
+              </a>
+            </li>
+            <li class="nav-item" (click)="goToHome()">
+              <a class="nav-link" >
+                <i class="now-ui-icons location_world"></i>
+              </a>
+            </li>
+            <li class="nav-item" (click)="goToUserProfile()">
+              <a class="nav-link" >
+                <i class="now-ui-icons users_single-02"></i>
+                <p>
+                  <span class="d-lg-none d-md-block">Account</span>
+                </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+    </div>
+</nav>

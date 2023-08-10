@@ -1,0 +1,56 @@
+<div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Reserve</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive" style="height: 654px; overflow: auto;">
+        <table class="table">
+          <thead class=" text-primary">
+            <th>
+              Building
+            </th>
+            <th>
+              Floor
+            </th>
+            <th>
+              Seat Tag
+            </th>
+            <th>
+              Type
+            </th>
+            <th>
+              Status
+            </th>
+            <th>
+              Reserve
+            </th>
+          </thead>
+          <tbody *ngFor="let reservationItem of reservations">
+            <tr>
+              <td>
+                  1
+              </td>
+              <td>
+                  {{ selectedFloor }}
+              </td>
+              <td>
+                  {{ reservationItem.tag }}
+              </td>
+              <td>
+                  {{ reservationItem.type }}
+              </td>
+              <td>
+                  {{ reservationItem.status }}
+              </td>
+              <td>
+                <div class="btn btn-primary" (click)="onReserveClick(reservationItem)">
+                  Reserve
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <hr style="padding-top: 5px;">
+    </div>
+  </div>

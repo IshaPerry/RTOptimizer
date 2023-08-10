@@ -1,0 +1,159 @@
+<div class="panel-header">
+  <div class="header text-center">
+    <h2 class="title">Welcome, {{firstName}}!</h2>
+  </div>
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Notifications</h4>
+        </div>
+        <div class="card-body">
+          <div style="height: 400px; overflow: auto;">
+            <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-info alert-with-icon" data-notify="container" *ngIf="banners.showNotification1">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showNotification1')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+            <span data-notify="message">You have 3 new TEAMS messages and 4 new emails.</span>
+          </div>
+        <!-- </div> -->
+        <!-- <div class = "notification-wrapper> -->
+          <div class="alert alert-info alert-with-icon" data-notify="container" *ngIf="banners.showNotification2">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showNotification2')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+            <span data-notify="message">Eric tagged you in a pull request at 2:42 P.M.</span>
+          </div>
+        <!-- </div> -->
+        <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-info alert-with-icon" data-notify="container"  *ngIf="banners.showNotification3">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showNotification3')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+            <span data-notify="message">You have 40 days left to claim your remaining 3 PTO days.</span>
+          <!-- </div> -->
+        </div>
+        <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-info alert-with-icon" data-notify="container" *ngIf="banners.showNotification4">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showNotification4')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+            <span data-notify="message">You have 3 drafts in your inbox.</span>
+          </div>
+        <!-- </div> -->
+        <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-info alert-with-icon" data-notify="container" *ngIf="banners.showNotification5">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showNotification5')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+            <span data-notify="message">You have recieved your monthly direct deposit.</span>
+          </div>
+        <!-- </div> -->
+        <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-info alert-with-icon" data-notify="container" *ngIf="banners.showNotification6">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showNotification6')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span data-notify="icon" class="now-ui-icons ui-1_bell-53"></span>
+            <span data-notify="message">Jane has requested your feedback.</span>
+          </div>
+          </div>
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Upcoming Meetings</h4>
+        </div>
+        <div class="card-body">
+          <div style="height: 400px; overflow: auto;">
+
+          
+          <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-warning" *ngIf="banners.showMeeting1">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showMeeting1')" >
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              <b> Tentative - </b> 4:00 P.M. SCRUM Session, Virtual </span>
+          </div>
+          <!-- </div> -->
+          <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-info" *ngIf="banners.showMeeting2">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showMeeting2')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              <b> Accepted - </b> 3:00 P.M. Demo with Abigail, Room 203 </span>
+          </div>
+        <!-- </div> -->
+        <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-info" *ngIf="banners.showMeeting3">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showMeeting3')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              <b> Accepted - </b> 1:00 P.M. AD Demo, Room 306 </span>
+          </div>
+          <!-- </div> -->
+          <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-warning" *ngIf="banners.showMeeting4">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showMeeting4')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              <b> Tentative - </b> 10 A.M. Team Meeting, Virtual </span>
+          </div>
+          <!-- </div> -->
+          <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-danger" *ngIf="banners.showMeeting5">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showMeeting5')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              <b> Declined - </b> 9:00 A.M. Finance Info Session, Room 205 </span>
+          </div>
+        <!-- </div> -->
+        <!-- <div class = "notification-wrapper"> -->
+          <div class="alert alert-info" *ngIf="banners.showMeeting6">
+            <button type="button" aria-hidden="true" class="close" (click)="closeNotification('showMeeting6')">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </button>
+            <span>
+              <b> Accepted - </b> 11 A.M. Coffee Chat, Floor 2 Lobby</span>
+          </div>
+        <!-- </div> -->
+         </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="places-buttons">
+            <div class="row">
+              <div class="col-md-6 ml-auto mr-auto text-center">
+                <h4 class="card-title">
+                  Calendar
+                </h4>
+                <button type="button" id="button" (click)="toggleWeekends()" class="btn btn-default btn-sm">Show Weekends</button>
+                <full-calendar [options]="calendarOptions"></full-calendar>
+              </div>
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

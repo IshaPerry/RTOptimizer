@@ -1,0 +1,2 @@
+<app-login-screen *ngIf="!isLoggedIn" (onLogin)="handleLogin()"></app-login-screen>
+<router-outlet *ngIf="isLoggedIn"></router-outlet>>

@@ -1,0 +1,144 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header">
+          <div class="row">
+            <h5 class="title" style="padding-left: 16px;">Reservations</h5>
+            <div
+            class="btn btn-primary" 
+            style="margin-left: auto; margin-top: 0; margin-right: 15px;" 
+            (click)="onHeatMapClick()">Heat Map</div>
+          </div>
+        </div>
+        <hr>
+        <div class="card-body ">
+          <div class="list">
+            <div 
+            *ngFor="let floor of floorImages; index as i" 
+            class="btn btn-primary"
+            alt="Floor Layout"
+            (click)="onSelectFloor(i)">
+              Floor {{ i + 1 }}
+            </div>
+          </div>
+          <div class="row">
+            <div class="img-container">
+              <img 
+              src="{{ floorImages[selectedFloor] }}"
+              
+              [style.height.px]="700"
+              (error)="$event.target.src = defaultFloorLayoutPath" 
+              (load)="onImageLoad($event.target.src)">
+            </div>
+          </div>
+          <hr style="padding-bottom: 5px;">
+          <input type="file" *ngIf="!imageFound && adminStatus == true" (change)="onFileSelected($event)"/>
+          <div class="card-body ">
+            <!-- Toolbar -->
+            <div 
+            *ngIf="buildings[selectedBuilding].floorReservations[selectedFloor].length > 0" 
+            #messageContainer 
+            class="container">
+                <h3 class=" text-center">RTO Bot</h3>
+                <div class="messaging">
+                <div class="inbox_msg">
+                    <div class="inbox_people">
+                    <div class="headind_srch">
+                        <div class="channel_heading">
+                        <h4>Command Suggestions</h4>
+                        </div>
+                    </div>
+                    <div class="inbox_chat">
+                        <div class="channels" *ngFor="let command of commandSuggestions; let i = index">
+                        <div class="chat_list">
+                            <div class="chat_people">
+                            <div class="chat_ib">
+                                <h5>
+                                {{ command }}
+                                </h5>
+                                <p *ngFor="let addon of commandAddons[i]">
+                                    {{ addon }}
+                                </p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="mesgs">
+                    <div class="msg_history">
+                        <li class="message" *ngFor="let message of messages">
+                        <div
+                            *ngIf="
+                            message.sender === 'bot';
+                            then incoming_msg;
+                            else outgoing_msg
+                            "
+                        ></div>
+                        <ng-template #incoming_msg>
+                            <div class="incoming_msg">
+                            <div class="incoming_msg_img">
+                                <img
+                                src="../../assets/img/robot-icon.jpg"
+                                alt="User avatar"
+                                />
+                            </div>
+                            <div class="received_msg" style="padding-top: 9px;">
+                                <div class="received_withd_msg">
+                                <p>{{ message.text }}</p>
+                                </div>
+                            </div>
+                            </div>
+                        </ng-template>
+                        <ng-template #outgoing_msg>
+                            <div class="outgoing_msg">
+                            <div class="sent_msg">
+                                <p>{{ message.text }}</p>
+                            </div>
+                            </div>
+                        </ng-template>
+                        </li>
+                    </div>
+                    <div class="type_msg">
+                        <form class="input_msg_write" (ngSubmit)="sendMessage(messageInput.value)">
+                        <input
+                            #messageInput
+                            value=""
+                            type="text"
+                            class="write_msg"
+                            placeholder="Type a message"
+                        />
+                        <button class="msg_send_btn" type="button" (click)="sendMessage(messageInput.value)">
+                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                        </button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+          <div class="row">
+            <app-reservation-list [selectedFloor]="selectedFloor + 1"
+            *ngIf="buildings[selectedBuilding].floorReservations[selectedFloor].length > 0"
+            style="width: 50%;">
+            </app-reservation-list>
+            <div class="col">
+              <app-user-reservation-list
+              *ngIf="buildings[selectedBuilding].floorReservations[selectedFloor].length > 0"
+              style="width: 50%;">
+              </app-user-reservation-list>
+              <app-team-tracker 
+              *ngIf="buildings[selectedBuilding].floorReservations[selectedFloor].length > 0"
+              style="width: 50%;">
+              </app-team-tracker>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
